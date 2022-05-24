@@ -136,8 +136,9 @@ namespace AI
             // 
             // trackBar1
             // 
-            this.trackBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.trackBar1.Location = new System.Drawing.Point(84, 618);
+            this.trackBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.trackBar1.Location = new System.Drawing.Point(89, 627);
+            this.trackBar1.Maximum = 30;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(293, 45);
             this.trackBar1.TabIndex = 11;
@@ -146,7 +147,7 @@ namespace AI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 618);
+            this.label3.Location = new System.Drawing.Point(12, 627);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 24);
             this.label3.TabIndex = 12;
@@ -189,6 +190,7 @@ namespace AI
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AI";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();

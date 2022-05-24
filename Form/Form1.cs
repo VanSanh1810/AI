@@ -19,8 +19,10 @@ namespace AI
         Graphics g;
         int xs, ys;
         Pen p = new Pen(Color.Blue, 5);
+        Pen p_point = new Pen(Color.Red, 5);
         DB dB = new DB();
         Queue<POINT> Result = new Queue<POINT>();
+        InfoForm A_star = new InfoForm();
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace AI
             AddItemToCombox();
             comboBox_from.SelectedIndex = 0;
             comboBox_to.SelectedIndex = 0;
+            Control.CheckForIllegalCrossThreadCalls = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,35 +82,43 @@ namespace AI
         private void DrawPoint(int x, int y)
         {
             Rectangle rec = new Rectangle(new Point(x, y), new Size(new Point(5, 5)));
-            g.DrawEllipse(p, rec); //Drawpoint
+            g.DrawEllipse(p_point, rec); //Drawpoint
         }
 
         private void Draw(Queue<POINT> Result)
         {
-            for(int i = 0; i< Result.Count - 1; i++)
-            {
-                Thread.Sleep(trackBar1.Value*10);
-                int x1 = Result.ElementAt(i).X;
-                int y1 = Result.ElementAt(i).Y;
-                int x2 = Result.ElementAt(i+1).X;
-                int y2 = Result.ElementAt(i+1).Y;
-                g.DrawLine(p, x1, y1, x2, y2);
-            }
+            new Thread(
+                () =>
+                   {
+                       for (int i = 0; i < Result.Count - 1; i++)
+                       {
+                           Thread.Sleep(trackBar1.Value * 10);
+                           int x1 = Result.ElementAt(i).X;
+                           int y1 = Result.ElementAt(i).Y;
+                           int x2 = Result.ElementAt(i + 1).X;
+                           int y2 = Result.ElementAt(i + 1).Y;
+                           g.DrawLine(p, x1, y1, x2, y2);
+                       }
+                   } ) { IsBackground = true }.Start();
+            
         }
 
         private void Astar_exec(string StartPoint, string EndPoint)
         {
+            InfoForm A_star = new InfoForm();
             Result.Clear();
-            Result = A.Run_A(StartPoint, EndPoint);
+            Result = A.Run_A(StartPoint, EndPoint, A_star);
             Draw(Result);
-            
+            A_star.Show();
         }
 
         private void UCS_exec(string StartPoint, string EndPoint)
         {
+            InfoForm UCS_ = new InfoForm();
             Result.Clear();
-            Result = UCS.Run_UCS(StartPoint, EndPoint);
+            Result = UCS.Run_UCS(StartPoint, EndPoint, UCS_);
             Draw(Result);
+            UCS_.Show();
         }
 
         private void btn_find_Click(object sender, EventArgs e)
@@ -131,6 +142,11 @@ namespace AI
                     Astar_exec(itm_from.Value, itm_to.Value);
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void AddItemToCombox()
