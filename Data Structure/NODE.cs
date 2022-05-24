@@ -34,5 +34,6 @@ namespace AI
             this.Heuristic = Math.Round(Heuristic, 3);
             way.Enqueue(pOINT);
         }
+
     }
 }

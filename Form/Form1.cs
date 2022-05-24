@@ -72,7 +72,8 @@ namespace AI
 
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            
+            g.Clear(Color.White);
+            this.BackgroundImage = global::AI.Properties.Resources.Map2_1_;
         }
 
         private void DrawPoint(int x, int y)
