@@ -17,15 +17,17 @@ namespace AI
             Open.Clear();
             //Them node dau tien vao tap open
             Open.Push(new NODE(StartPoint, 0, LOCATION_DB.GetCost(StartPoint, EndPoint)));
-            ShowOpen(Open);
+            //ShowOpen(Open);
             while(Open.Count > 0)
             {
-                Console.WriteLine("---------------");
+                //Console.WriteLine("---------------");
                 NODE tmp = Open.Pop(); //Diem nho nhat trong open
                 Close.Add(tmp.Name); //bo vao close
                 if(tmp.Name == EndPoint || tmp.Heuristic == 0)
                 {
+                    //Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                     tmp.way.Enqueue(LOCATION_DB.GetPOINT(EndPoint));
+                    //ShowQueuePoint(tmp.way);
                     return tmp.way;
                 }
                 for(int i=0; i < dB.CONNECTION.Rows.Count; i++) //Check cac dinh lien ke
@@ -34,7 +36,8 @@ namespace AI
                     if (CONNECTION_DB.CheckConnection(tmp.Name, tmp_point_name) && !Close.Contains(tmp_point_name)) // neu co ket noi se add vao stack open
                     {
                         //string p = dB.CONNECTION.Rows[i][0].ToString().Trim();  //Diem lien ket voi diem nho nhat trong open
-
+                        //Console.WriteLine(tmp_point_name);
+                        //Console.WriteLine("pre: " + tmp.Name + "\n");
                         string name = LOCATION_DB.GetPOINT(tmp_point_name).Name;  //Ten dien lien ket voi diem nho nhat trong open
                         int index = CheckNodeExist(Open, name); //Check xem đã tồn tại trong Open chưa
                         if (index != -1) //Check trung
@@ -48,6 +51,7 @@ namespace AI
                                             LOCATION_DB.GetCost(name, EndPoint) * 2,            //Gia tri heuristic
                                             LOCATION_DB.GetPOINT(tmp.Name),                     //Diem moi cap nhan trong path dang xet
                                             tmp.way));
+                                //Console.WriteLine("****");
                             }
                         }
                         else
@@ -57,11 +61,14 @@ namespace AI
                                             LOCATION_DB.GetCost(name, EndPoint) * 2,            //Gia tri heuristic
                                             LOCATION_DB.GetPOINT(tmp.Name),                     //Diem moi cap nhan trong path dang xet
                                             tmp.way));
+                            //Console.WriteLine("+++");
+                            //ShowQueuePoint(tmp.way);
+                            //Console.WriteLine("####");
                         }
                     }
                 }
                 Open = SortStack(Open); //Xap sep stack theo gia tri giam dan cua tong cost va heuristic
-                ShowOpen(Open);
+                //ShowOpen(Open);
             }
             return null;
         }
@@ -104,6 +111,15 @@ namespace AI
                 }
                 Console.WriteLine("\n");
             }
+        }
+
+        private static void ShowQueuePoint(Queue<POINT> z)
+        {
+            foreach (POINT a in z)
+            {
+                Console.Write(a.Name + " ");
+            }
+            Console.WriteLine("\n");
         }
 
         private static int CheckNodeExist(Stack<NODE> Open, string a) //Trùng thì trả về index k thì trả về -1

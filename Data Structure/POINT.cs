@@ -17,5 +17,11 @@ namespace AI
             this.X = X;
             this.Y = Y;
         }
+        public POINT(POINT a)
+        {
+            this.Name = a.Name;
+            this.X = a.X;
+            this.Y = a.Y;
+        }
     }
 }

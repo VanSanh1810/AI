@@ -24,7 +24,11 @@ namespace AI
             this.Name = Name;
             this.Cost = Math.Round(Cost, 3);
             this.Heuristic = Math.Round(Heuristic, 3);
-            way = OldQueue;
+            //way = OldQueue;
+            for (int i = 0; i < OldQueue.Count; i++ )
+            {
+                way.Enqueue(OldQueue.ElementAt(i));
+            }
             way.Enqueue(pOINT);
         }
         public NODE(string Name, double Cost, double Heuristic, POINT pOINT)
@@ -33,6 +37,17 @@ namespace AI
             this.Cost = Math.Round(Cost, 3); 
             this.Heuristic = Math.Round(Heuristic, 3);
             way.Enqueue(pOINT);
+        }
+        public NODE(string Name, double Cost, double Heuristic, Queue<POINT> OldQueue)
+        {
+            this.Name = Name;
+            this.Cost = Math.Round(Cost, 3);
+            this.Heuristic = Math.Round(Heuristic, 3);
+            //way = OldQueue;
+            for (int i = 0; i < OldQueue.Count; i++)
+            {
+                way.Enqueue(OldQueue.ElementAt(i));
+            }
         }
 
     }
