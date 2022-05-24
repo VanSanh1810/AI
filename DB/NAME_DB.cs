@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace AI
 {
-    class POINT
+    class NAME_DB
     {
-        public string Name { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
+        DB dB = new DB();
     }
 }

@@ -34,21 +34,23 @@ namespace AI
             this.comboBox_from = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_to = new System.Windows.Forms.ComboBox();
             this.btn_find = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.btn_info = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataSet1 = new System.Data.DataSet();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // rabtn_astar
             // 
             this.rabtn_astar.AutoSize = true;
-            this.rabtn_astar.Location = new System.Drawing.Point(107, 13);
+            this.rabtn_astar.Location = new System.Drawing.Point(64, 13);
             this.rabtn_astar.Name = "rabtn_astar";
             this.rabtn_astar.Size = new System.Drawing.Size(36, 17);
             this.rabtn_astar.TabIndex = 0;
@@ -59,7 +61,7 @@ namespace AI
             // rabtn_ucs
             // 
             this.rabtn_ucs.AutoSize = true;
-            this.rabtn_ucs.Location = new System.Drawing.Point(54, 13);
+            this.rabtn_ucs.Location = new System.Drawing.Point(11, 13);
             this.rabtn_ucs.Name = "rabtn_ucs";
             this.rabtn_ucs.Size = new System.Drawing.Size(47, 17);
             this.rabtn_ucs.TabIndex = 1;
@@ -70,15 +72,15 @@ namespace AI
             // comboBox_from
             // 
             this.comboBox_from.FormattingEnabled = true;
-            this.comboBox_from.Location = new System.Drawing.Point(192, 12);
+            this.comboBox_from.Location = new System.Drawing.Point(148, 12);
             this.comboBox_from.Name = "comboBox_from";
-            this.comboBox_from.Size = new System.Drawing.Size(109, 21);
+            this.comboBox_from.Size = new System.Drawing.Size(153, 21);
             this.comboBox_from.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(151, 15);
+            this.label1.Location = new System.Drawing.Point(106, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 3;
@@ -93,18 +95,18 @@ namespace AI
             this.label2.TabIndex = 6;
             this.label2.Text = "To :";
             // 
-            // comboBox1
+            // comboBox_to
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(339, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(109, 21);
-            this.comboBox1.TabIndex = 7;
+            this.comboBox_to.FormattingEnabled = true;
+            this.comboBox_to.Location = new System.Drawing.Point(339, 12);
+            this.comboBox_to.Name = "comboBox_to";
+            this.comboBox_to.Size = new System.Drawing.Size(155, 21);
+            this.comboBox_to.TabIndex = 7;
             // 
             // btn_find
             // 
             this.btn_find.BackColor = System.Drawing.Color.Transparent;
-            this.btn_find.Location = new System.Drawing.Point(454, 10);
+            this.btn_find.Location = new System.Drawing.Point(500, 10);
             this.btn_find.Name = "btn_find";
             this.btn_find.Size = new System.Drawing.Size(70, 23);
             this.btn_find.TabIndex = 8;
@@ -114,7 +116,7 @@ namespace AI
             // 
             // btn_refresh
             // 
-            this.btn_refresh.Location = new System.Drawing.Point(530, 10);
+            this.btn_refresh.Location = new System.Drawing.Point(576, 10);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(70, 23);
             this.btn_refresh.TabIndex = 9;
@@ -124,7 +126,7 @@ namespace AI
             // 
             // btn_info
             // 
-            this.btn_info.Location = new System.Drawing.Point(606, 10);
+            this.btn_info.Location = new System.Drawing.Point(652, 10);
             this.btn_info.Name = "btn_info";
             this.btn_info.Size = new System.Drawing.Size(70, 23);
             this.btn_info.TabIndex = 10;
@@ -146,9 +148,9 @@ namespace AI
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 618);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 24);
+            this.label3.Size = new System.Drawing.Size(71, 24);
             this.label3.TabIndex = 12;
-            this.label3.Text = "label3";
+            this.label3.Text = "Speed";
             // 
             // dataGridView1
             // 
@@ -158,6 +160,10 @@ namespace AI
             this.dataGridView1.Size = new System.Drawing.Size(98, 133);
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.Visible = false;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "NewDataSet";
             // 
             // Form1
             // 
@@ -172,7 +178,7 @@ namespace AI
             this.Controls.Add(this.btn_info);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.btn_find);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_to);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox_from);
@@ -187,6 +193,7 @@ namespace AI
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,13 +206,14 @@ namespace AI
         private System.Windows.Forms.ComboBox comboBox_from;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_to;
         private System.Windows.Forms.Button btn_find;
         private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.Button btn_info;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Data.DataSet dataSet1;
     }
 }
 

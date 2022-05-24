@@ -20,7 +20,7 @@ namespace AI
         int xs, ys;
         Pen p = new Pen(Color.Blue, 5);
         DB dB = new DB();
-        Stack<string> Result = new Stack<string>();
+        Queue<POINT> Result = new Queue<POINT>();
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +28,9 @@ namespace AI
             Pen p = new Pen(Color.Blue, 3);
             rec.*/
             g = this.CreateGraphics();
+            AddItemToCombox();
+            comboBox_from.SelectedIndex = 0;
+            comboBox_to.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,7 +58,7 @@ namespace AI
         private void btn_info_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(openFileDialog.FileName.ToString());
-            dataGridView1.DataSource = dB.CONNECTION;
+            //dataGridView1.DataSource = dB.CONNECTION;
                     
         }
 
@@ -69,7 +72,7 @@ namespace AI
 
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.Transparent);
+            
         }
 
         private void DrawPoint(int x, int y)
@@ -78,49 +81,68 @@ namespace AI
             g.DrawEllipse(p, rec); //Drawpoint
         }
 
-        private void A()
+        private void Draw(Queue<POINT> Result)
         {
-            Result.Clear();
+            for(int i = 0; i< Result.Count - 1; i++)
+            {
+                Thread.Sleep(trackBar1.Value*10);
+                int x1 = Result.ElementAt(i).X;
+                int y1 = Result.ElementAt(i).Y;
+                int x2 = Result.ElementAt(i+1).X;
+                int y2 = Result.ElementAt(i+1).Y;
+                g.DrawLine(p, x1, y1, x2, y2);
+            }
         }
 
-        private void UCS()
+        private void Astar_exec(string StartPoint, string EndPoint)
         {
             Result.Clear();
+            Result = A.Run_A(StartPoint, EndPoint);
+            Draw(Result);
+            
+        }
+
+        private void UCS_exec(string StartPoint, string EndPoint)
+        {
+            Result.Clear();
+            Result = UCS.Run_UCS(StartPoint, EndPoint);
+            Draw(Result);
         }
 
         private void btn_find_Click(object sender, EventArgs e)
         {
-            if (rabtn_ucs.Checked)
+            ComboBoxItem itm_from = (ComboBoxItem)comboBox_from.SelectedItem;
+            ComboBoxItem itm_to = (ComboBoxItem)comboBox_to.SelectedItem;
+            if (itm_from.Value == itm_to.Value)
             {
-                //UCS
+                MessageBox.Show("Trùng điểm !! ");
             }
             else
             {
-                //A*
+                if (rabtn_ucs.Checked)
+                {
+                    //UCS
+                    UCS_exec(itm_from.Value, itm_to.Value);
+                }
+                else
+                {
+                    //A*
+                    Astar_exec(itm_from.Value, itm_to.Value);
+                }
             }
         }
 
-        public static Stack<int> sortstack(Stack<int> input)
+        private void AddItemToCombox()
         {
-            Stack<int> tmpStack = new Stack<int>();
-            while (input.Count > 0)
+            DataTable Name = dB.NAME;
+            for (int i = 0; i < Name.Rows.Count; i++)
             {
-                // pop out the first element
-                int tmp = input.Pop();
-
-                // while temporary stack is not empty and
-                // top of stack is greater than temp
-                while (tmpStack.Count > 0 && tmpStack.Peek() > tmp)
-                {
-                    // pop from temporary stack and
-                    // push it to the input stack
-                    input.Push(tmpStack.Pop());
-                }
-
-                // push temp in temporary of stack
-                tmpStack.Push(tmp);
+                comboBox_from.Items.Add(new ComboBoxItem(Name.Rows[i].Field<string>("Name"), Name.Rows[i].Field<string>("ID")));
             }
-            return tmpStack;
+            for (int i = 0; i < Name.Rows.Count; i++)
+            {
+                comboBox_to.Items.Add(new ComboBoxItem(Name.Rows[i].Field<string>("Name"), Name.Rows[i].Field<string>("ID")));
+            }
         }
     }
 }
