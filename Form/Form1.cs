@@ -44,6 +44,7 @@ namespace AI
             comboBox_to.SelectedIndex = 0;
             Control.CheckForIllegalCrossThreadCalls = false;
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -243,12 +244,17 @@ namespace AI
             DataTable Name = dB.NAME;
             for (int i = 0; i < Name.Rows.Count; i++)
             {
-                comboBox_from.Items.Add(new ComboBoxItem(Name.Rows[i].Field<string>("Name"), Name.Rows[i].Field<string>("ID")));
+                string myString = Name.Rows[i].Field<string>("Name");
+                /*byte[] bytes = Encoding.Default.GetBytes(myString);
+                myString = Encoding.UTF8.GetString(bytes);*/
+                string myString1 = Name.Rows[i].Field<string>("ID");
+                //byte[] bytes1 = Encoding.Default.GetBytes(myString1);
+                //myString1 = Encoding.UTF8.GetString(bytes);
+                //Console.WriteLine(myString);
+                comboBox_from.Items.Add(new ComboBoxItem(myString, myString1));
+                comboBox_to.Items.Add(new ComboBoxItem(myString, myString1));
             }
-            for (int i = 0; i < Name.Rows.Count; i++)
-            {
-                comboBox_to.Items.Add(new ComboBoxItem(Name.Rows[i].Field<string>("Name"), Name.Rows[i].Field<string>("ID")));
-            }
+            
         }
     }
 }

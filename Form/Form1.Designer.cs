@@ -77,11 +77,11 @@ namespace AI
             // 
             // comboBox_from
             // 
-            this.comboBox_from.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_from.Font = new System.Drawing.Font("UVN Vung Tau", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_from.FormattingEnabled = true;
             this.comboBox_from.Location = new System.Drawing.Point(156, 12);
             this.comboBox_from.Name = "comboBox_from";
-            this.comboBox_from.Size = new System.Drawing.Size(145, 24);
+            this.comboBox_from.Size = new System.Drawing.Size(175, 26);
             this.comboBox_from.TabIndex = 2;
             // 
             // label1
@@ -98,7 +98,7 @@ namespace AI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(307, 15);
+            this.label2.Location = new System.Drawing.Point(337, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 16);
             this.label2.TabIndex = 6;
@@ -106,18 +106,18 @@ namespace AI
             // 
             // comboBox_to
             // 
-            this.comboBox_to.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_to.Font = new System.Drawing.Font("UVN Vung Tau", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_to.FormattingEnabled = true;
-            this.comboBox_to.Location = new System.Drawing.Point(339, 12);
+            this.comboBox_to.Location = new System.Drawing.Point(371, 12);
             this.comboBox_to.Name = "comboBox_to";
-            this.comboBox_to.Size = new System.Drawing.Size(155, 24);
+            this.comboBox_to.Size = new System.Drawing.Size(172, 26);
             this.comboBox_to.TabIndex = 7;
             // 
             // btn_find
             // 
             this.btn_find.BackColor = System.Drawing.Color.Transparent;
             this.btn_find.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_find.Location = new System.Drawing.Point(500, 10);
+            this.btn_find.Location = new System.Drawing.Point(549, 10);
             this.btn_find.Name = "btn_find";
             this.btn_find.Size = new System.Drawing.Size(70, 23);
             this.btn_find.TabIndex = 8;
@@ -128,7 +128,7 @@ namespace AI
             // btn_refresh
             // 
             this.btn_refresh.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_refresh.Location = new System.Drawing.Point(576, 10);
+            this.btn_refresh.Location = new System.Drawing.Point(625, 10);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(70, 23);
             this.btn_refresh.TabIndex = 9;
@@ -139,7 +139,7 @@ namespace AI
             // btn_info
             // 
             this.btn_info.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_info.Location = new System.Drawing.Point(652, 10);
+            this.btn_info.Location = new System.Drawing.Point(701, 10);
             this.btn_info.Name = "btn_info";
             this.btn_info.Size = new System.Drawing.Size(70, 23);
             this.btn_info.TabIndex = 10;
@@ -150,8 +150,8 @@ namespace AI
             // trackBar1
             // 
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.trackBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.trackBar1.Location = new System.Drawing.Point(89, 630);
+            this.trackBar1.BackColor = System.Drawing.Color.Black;
+            this.trackBar1.Location = new System.Drawing.Point(98, 638);
             this.trackBar1.Maximum = 30;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(293, 45);
@@ -162,10 +162,10 @@ namespace AI
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 627);
+            this.label3.Font = new System.Drawing.Font("UTM Akashi", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 638);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 24);
+            this.label3.Size = new System.Drawing.Size(80, 23);
             this.label3.TabIndex = 12;
             this.label3.Text = "Speed";
             // 
@@ -186,7 +186,7 @@ namespace AI
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(388, 638);
+            this.label4.Location = new System.Drawing.Point(397, 646);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 14;
@@ -200,7 +200,7 @@ namespace AI
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::AI.Properties.Resources.Map3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(734, 687);
+            this.ClientSize = new System.Drawing.Size(783, 687);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
