@@ -152,7 +152,7 @@ namespace AI
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.trackBar1.BackColor = System.Drawing.Color.Black;
             this.trackBar1.Location = new System.Drawing.Point(98, 638);
-            this.trackBar1.Maximum = 30;
+            this.trackBar1.Maximum = 50;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(293, 45);
             this.trackBar1.TabIndex = 11;
