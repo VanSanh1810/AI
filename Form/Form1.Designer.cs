@@ -29,6 +29,7 @@ namespace AI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.rabtn_astar = new System.Windows.Forms.RadioButton();
             this.rabtn_ucs = new System.Windows.Forms.RadioButton();
             this.comboBox_from = new System.Windows.Forms.ComboBox();
@@ -51,9 +52,11 @@ namespace AI
             // rabtn_astar
             // 
             this.rabtn_astar.AutoSize = true;
+            this.rabtn_astar.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rabtn_astar.ForeColor = System.Drawing.Color.Blue;
             this.rabtn_astar.Location = new System.Drawing.Point(64, 13);
             this.rabtn_astar.Name = "rabtn_astar";
-            this.rabtn_astar.Size = new System.Drawing.Size(36, 17);
+            this.rabtn_astar.Size = new System.Drawing.Size(41, 20);
             this.rabtn_astar.TabIndex = 0;
             this.rabtn_astar.TabStop = true;
             this.rabtn_astar.Text = "A*";
@@ -62,9 +65,11 @@ namespace AI
             // rabtn_ucs
             // 
             this.rabtn_ucs.AutoSize = true;
+            this.rabtn_ucs.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rabtn_ucs.ForeColor = System.Drawing.Color.Green;
             this.rabtn_ucs.Location = new System.Drawing.Point(11, 13);
             this.rabtn_ucs.Name = "rabtn_ucs";
-            this.rabtn_ucs.Size = new System.Drawing.Size(47, 17);
+            this.rabtn_ucs.Size = new System.Drawing.Size(49, 20);
             this.rabtn_ucs.TabIndex = 1;
             this.rabtn_ucs.TabStop = true;
             this.rabtn_ucs.Text = "UCS";
@@ -72,41 +77,46 @@ namespace AI
             // 
             // comboBox_from
             // 
+            this.comboBox_from.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_from.FormattingEnabled = true;
-            this.comboBox_from.Location = new System.Drawing.Point(148, 12);
+            this.comboBox_from.Location = new System.Drawing.Point(156, 12);
             this.comboBox_from.Name = "comboBox_from";
-            this.comboBox_from.Size = new System.Drawing.Size(153, 21);
+            this.comboBox_from.Size = new System.Drawing.Size(145, 24);
             this.comboBox_from.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(106, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "From :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(307, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.Size = new System.Drawing.Size(28, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "To :";
             // 
             // comboBox_to
             // 
+            this.comboBox_to.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_to.FormattingEnabled = true;
             this.comboBox_to.Location = new System.Drawing.Point(339, 12);
             this.comboBox_to.Name = "comboBox_to";
-            this.comboBox_to.Size = new System.Drawing.Size(155, 21);
+            this.comboBox_to.Size = new System.Drawing.Size(155, 24);
             this.comboBox_to.TabIndex = 7;
             // 
             // btn_find
             // 
             this.btn_find.BackColor = System.Drawing.Color.Transparent;
+            this.btn_find.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_find.Location = new System.Drawing.Point(500, 10);
             this.btn_find.Name = "btn_find";
             this.btn_find.Size = new System.Drawing.Size(70, 23);
@@ -117,6 +127,7 @@ namespace AI
             // 
             // btn_refresh
             // 
+            this.btn_refresh.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_refresh.Location = new System.Drawing.Point(576, 10);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(70, 23);
@@ -127,6 +138,7 @@ namespace AI
             // 
             // btn_info
             // 
+            this.btn_info.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_info.Location = new System.Drawing.Point(652, 10);
             this.btn_info.Name = "btn_info";
             this.btn_info.Size = new System.Drawing.Size(70, 23);
@@ -137,15 +149,18 @@ namespace AI
             // 
             // trackBar1
             // 
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.trackBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.trackBar1.Location = new System.Drawing.Point(89, 627);
+            this.trackBar1.Location = new System.Drawing.Point(89, 630);
             this.trackBar1.Maximum = 30;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(293, 45);
             this.trackBar1.TabIndex = 11;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 627);
@@ -161,7 +176,7 @@ namespace AI
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 36);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(98, 133);
             this.dataGridView1.TabIndex = 13;
@@ -169,8 +184,9 @@ namespace AI
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(388, 627);
+            this.label4.Location = new System.Drawing.Point(388, 638);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 14;
@@ -184,7 +200,7 @@ namespace AI
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::AI.Properties.Resources.Map3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(734, 661);
+            this.ClientSize = new System.Drawing.Size(734, 687);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
@@ -199,11 +215,12 @@ namespace AI
             this.Controls.Add(this.rabtn_ucs);
             this.Controls.Add(this.rabtn_astar);
             this.DoubleBuffered = true;
-            this.MaximumSize = new System.Drawing.Size(1200, 700);
-            this.MinimumSize = new System.Drawing.Size(750, 700);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1200, 726);
+            this.MinimumSize = new System.Drawing.Size(750, 726);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AI";
+            this.Text = "Nhóm 9 AI";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);

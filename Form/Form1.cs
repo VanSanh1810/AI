@@ -18,11 +18,12 @@ namespace AI
     {
         static int Default_Scr_x = 750;
         static int Default_Scr_y = 700;
-        static double new_Scr_x;
-        static double new_Scr_y;
+        static int new_Scr_x;
+        static int new_Scr_y;
         public static double factor_x;
         public static double factor_y;
-        private Graphics g;
+        private static Graphics g;
+        public static int Delay_Time = 0;
         int xs, ys;
         Pen p_A = new Pen(Color.Blue, 5);
         Pen p_UCS = new Pen(Color.Green, 5);
@@ -42,6 +43,7 @@ namespace AI
             comboBox_from.SelectedIndex = 0;
             comboBox_to.SelectedIndex = 0;
             Control.CheckForIllegalCrossThreadCalls = false;
+            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,9 +58,13 @@ namespace AI
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            //label4.Text = "Fac X : " + Math.Round(factor_x, 4) + " \nFac Y : " + Math.Round(factor_y, 4);
-            
-            //MessageBox.Show("x = " + x.ToString() +", y = " + y.ToString() );
+            label4.Text = "Fac X : " + Math.Round(factor_x, 4) + " \nFac Y : " + Math.Round(factor_y, 4);
+            //g.SetClip(new Rectangle(0, 0, new_Scr_x - 25, new_Scr_y - 25),System.Drawing.Drawing2D.CombineMode.Replace);
+            //g.Clip = new Region(new Rectangle(0, 0, new_Scr_x - 25, new_Scr_y - 25));
+            Graphics tmp = this.CreateGraphics();
+            tmp.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            //MessageBox.Show(tmp.Clip.GetBounds(tmp).Width + "  :  " + tmp.Clip.GetBounds(tmp).Height);
+            //MessageBox.Show("x = " + e.X.ToString() +", y = " + e.Y .ToString() );
             //g.DrawLine(p, x, y, x+ad, y+ad);
             //DrawPoint(xs, ys);
             //MessageBox.Show("X " + xs.ToString() + " - Y" + ys.ToString());
@@ -66,7 +72,7 @@ namespace AI
             {
                 double tmp_x = Convert.ToDouble(dB.LOCATION.Rows[i][1]) * Form1.factor_x;
                 double tmp_y = Convert.ToDouble(dB.LOCATION.Rows[i][2]) * Form1.factor_y;
-                DrawPoint(Convert.ToInt32(Math.Round(tmp_x,0).ToString()), Convert.ToInt32(Math.Round(tmp_y, 0).ToString()));
+                DrawPoint(tmp ,Convert.ToInt32(Math.Round(tmp_x,0).ToString()), Convert.ToInt32(Math.Round(tmp_y, 0).ToString()));
             }
         }
 
@@ -74,6 +80,8 @@ namespace AI
         {
             //MessageBox.Show(openFileDialog.FileName.ToString());
             //dataGridView1.DataSource = dB.CONNECTION;
+            MyGroup a = new MyGroup();
+            a.Show(this);
                     
         }
 
@@ -96,17 +104,17 @@ namespace AI
             label4.Text = "Fac X : " + Math.Round(factor_x, 4) + " \nFac Y : " + Math.Round(factor_y, 4);
             g.Clear(Color.White);
             this.BackgroundImage = global::AI.Properties.Resources.Map3;
-            g.SetClip(new Rectangle(0, 0, (int)new_Scr_x, (int)new_Scr_x));
+            //g.SetClip(new Rectangle(0, 0, (int)new_Scr_x, (int)new_Scr_x));
         }
 
-        private void DrawPoint(int x, int y)
+        private void DrawPoint(Graphics tmp, int x, int y)
         {
             
             Rectangle rec = new Rectangle(new Point(x, y), new Size(new Point(5, 5)));
-            g.DrawEllipse(p_point, rec); //Drawpoint
+            tmp.DrawEllipse(p_point, rec); //Drawpoint
         }
 
-        private void Draw(Queue<POINT> Result, int type)
+        private void Draw(Graphics tmp, Queue<POINT> Result, int type, InfoForm a)
         {
             new Thread(
                 () =>
@@ -118,10 +126,11 @@ namespace AI
                            double y1 = (double)Result.ElementAt(i).Y * Form1.factor_y;
                            double x2 = (double)Result.ElementAt(i + 1).X * Form1.factor_x;
                            double y2 = (double)Result.ElementAt(i + 1).Y * Form1.factor_y;
-                           g.DrawLine((type == 0)? p_A : p_UCS, (int)x1, (int)y1, (int)x2, (int)y2);
+                           tmp.DrawLine((type == 0)? p_A : p_UCS, (int)x1, (int)y1, (int)x2, (int)y2);
                        }
+                       Thread.Sleep(trackBar1.Value * 10);
+                       a.ShowDialog();
                    } ) { IsBackground = true }.Start();
-            
         }
 
         private void Astar_exec(string StartPoint, string EndPoint)
@@ -129,8 +138,9 @@ namespace AI
             InfoForm A_star = new InfoForm();
             Result.Clear();
             Result = A.Run_A(StartPoint, EndPoint, A_star);
-            Draw(Result,0);
-            A_star.Show();
+            Graphics tmp = this.CreateGraphics();
+            tmp.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Draw(tmp, Result,0, A_star);
         }
 
         private void UCS_exec(string StartPoint, string EndPoint)
@@ -138,8 +148,9 @@ namespace AI
             InfoForm UCS_ = new InfoForm();
             Result.Clear();
             Result = UCS.Run_UCS(StartPoint, EndPoint, UCS_);
-            Draw(Result,1);
-            UCS_.Show();
+            Graphics tmp = this.CreateGraphics();
+            tmp.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Draw(tmp, Result,1, UCS_);
         }
 
         private void btn_find_Click(object sender, EventArgs e)
@@ -191,8 +202,9 @@ namespace AI
             label4.Text = "Fac X : " + Math.Round(factor_x, 4) + " \nFac Y : " + Math.Round(factor_y, 4);
             g.Clear(Color.White);
             this.BackgroundImage = global::AI.Properties.Resources.Map3;
+
+            //g.SetClip(new Rectangle(0, 0, (int)new_Scr_x, (int)new_Scr_y)); //System.Drawing.Drawing2D.CombineMode.Union);
             
-            g.SetClip(new Rectangle(0, 0, (int)new_Scr_x, (int)new_Scr_x), System.Drawing.Drawing2D.CombineMode.Complement);
         }
 
         private void Form1_ResizeEnd(object sender, EventArgs e)
@@ -205,7 +217,7 @@ namespace AI
             g.Clear(Color.White);
             this.BackgroundImage = global::AI.Properties.Resources.Map3;
 
-            g.SetClip(new Rectangle(0, 0, (int)new_Scr_x, (int)new_Scr_x), System.Drawing.Drawing2D.CombineMode.Complement);
+            //g.SetClip(new Rectangle(0, 0, (int)new_Scr_x, (int)new_Scr_y)); //System.Drawing.Drawing2D.CombineMode.Union);
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -215,11 +227,15 @@ namespace AI
             factor_x = (double)new_Scr_x / (double)Default_Scr_x;
             factor_y = (double)new_Scr_y / (double)Default_Scr_y;
             label4.Text = "Fac X : " + Math.Round(factor_x, 4) + " \nFac Y : " + Math.Round(factor_y, 4);
-            g.Clear(Color.White);
-            this.BackgroundImage = global::AI.Properties.Resources.Map3;
-
             
-            g.SetClip(new Rectangle(0, 0, (int)new_Scr_x, (int)new_Scr_x), System.Drawing.Drawing2D.CombineMode.Complement);
+
+
+            //g.SetClip(new Rectangle(0, 0, (int)new_Scr_x, (int)new_Scr_y)); //System.Drawing.Drawing2D.CombineMode.Union);
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            Delay_Time = trackBar1.Value;
         }
 
         private void AddItemToCombox()

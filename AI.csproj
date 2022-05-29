@@ -78,6 +78,12 @@
     <Compile Include="DB\NAME_DB.cs" />
     <Compile Include="Data Structure\NODE.cs" />
     <Compile Include="Data Structure\POINT.cs" />
+    <Compile Include="Form\MyGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MyGroup.Designer.cs">
+      <DependentUpon>MyGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Algorithm\UCS.cs" />
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MyGroup.resx">
+      <DependentUpon>MyGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

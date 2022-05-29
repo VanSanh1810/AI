@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace AI
 {
-    public partial class InfoForm : Form
+    public partial class MyGroup : Form
     {
-        public InfoForm()
+        public MyGroup()
         {
             InitializeComponent();
-        }
-
-        private void InfoForm_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

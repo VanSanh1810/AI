@@ -36,3 +36,4 @@ D:\code\AI\project\AI\obj\Debug\AI.csproj.GenerateResource.cache
 D:\code\AI\project\AI\obj\Debug\AI.csproj.CoreCompileInputs.cache
 D:\code\AI\project\AI\obj\Debug\AI.exe
 D:\code\AI\project\AI\obj\Debug\AI.pdb
+D:\code\AI\project\AI\obj\Debug\AI.MyGroup.resources

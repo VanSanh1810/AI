@@ -126,10 +126,20 @@ namespace AI
                                 " || \tG: " + Open.ElementAt(i).Cost + 
                                 " \tH: " + Open.ElementAt(i).Heuristic +
                                 " \tSUM: " + sum);*/
+                int tmp = Open.ElementAt(i).Cost.ToString().Length;
+                string tmp_string;
+                if (tmp <= 4)
+                {
+                    tmp_string = Open.ElementAt(i).Cost.ToString() + "\t";
+                }
+                else
+                {
+                    tmp_string = Open.ElementAt(i).Cost.ToString();
+                }
                 A_star.listBox1.Items.Add(Open.ElementAt(i).Name +
-                                " || \tG: " + Open.ElementAt(i).Cost +
-                                " \tH: " + Open.ElementAt(i).Heuristic +
-                                " \tSUM: " + sum);
+                                " || \tG: " + tmp_string +
+                                "       \tH: " + Open.ElementAt(i).Heuristic +
+                                "       \tSUM: " + sum);
                 ShowQueuePoint(Open.ElementAt(i).way, A_star);
                 A_star.listBox1.Items.Add("-----------------------------------------------------------------------------------------------");
             }
